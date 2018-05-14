@@ -1,0 +1,28 @@
+{
+  "name": "quietswipe",
+  "version": "0.1.0",
+  "description": "A plugin to provide simple swipe event on touch devices.",
+  "main": "src/QuietSwipe.js",
+  "scripts": {
+    "server": "http-server .",
+    "watch": "watch 'npm run dist' src",
+    "dist": "mkdir -p dist && uglifyjs src/QuietSwipe.js -o dist/QuietSwipe.min.js --mangle",
+    "inst": "npm install uglify-js http-server --save-dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cy-park/QuietSwipe.git"
+  },
+  "keywords": [],
+  "author": "Chan Young Park <designbycy@gmail.com> (http://www.chanyoungpark.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cy-park/QuietSwipe/issues"
+  },
+  "homepage": "https://github.com/cy-park/QuietSwipe#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "uglify-js": "^3.3.25"
+  }
+}
