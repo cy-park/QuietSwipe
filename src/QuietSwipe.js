@@ -36,17 +36,26 @@ var QuietSwipe = function(callback, options){
     ,   _tt  = options.timeThreshold || 2000
     ,   _mv  = options.moveThreshold || 50
     ,   _dir = options.direction || 'vertical'
+    ,   _mouse = options.enableMouseGesture;
 
     var _eStart;
 
-    _el.addEventListener('touchstart', function(e){
+    var onTouchStart = function(e){
         _eStart = e;
-    });
+    };
 
-    _el.addEventListener('touchend', function(e){
+    var onTouchEnd = function(e){
         var qse = new QSEventUnit(_eStart, e);
         callback.call(_el, qse);
-    })
+    }
+
+    _el.addEventListener('touchstart', onTouchStart);
+    _el.addEventListener('touchend', onTouchEnd);
+
+    if (_mouse) {
+        _el.addEventListener('mousedown', onTouchStart);
+        _el.addEventListener('mouseup', onTouchEnd);
+    }
 };
 
 function QSEventUnit(eStart, eEnd){
@@ -67,7 +76,7 @@ function QSEventUnit(eStart, eEnd){
     };
 }
 
-if (typeof module === 'object' && module.exports) module.exports = QuietWheel;
-else if (typeof define === 'function' && define.amd) define(QuietWheel);
-else this.QuietWheel = QuietWheel;
+if (typeof module === 'object' && module.exports) module.exports = QuietSwipe;
+else if (typeof define === 'function' && define.amd) define(QuietSwipe);
+else this.QuietSwipe = QuietSwipe;
 }).call(this);
