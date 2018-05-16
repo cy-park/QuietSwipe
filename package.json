@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/cy-park/QuietSwipe.git"
   },
-  "keywords": [],
+  "keywords": ["swipe"],
   "author": "Chan Young Park <designbycy@gmail.com> (http://www.chanyoungpark.com)",
   "license": "MIT",
   "bugs": {
