@@ -65,9 +65,16 @@ function QSEventUnit(eStart, eEnd){
     self.originalTouchStartEvent = eStart;
     self.originalTouchEndEvent = eEnd;
 
-    self.delta = {
+    self.delta = eEnd.pageX ? {
         x: eEnd.pageX - eStart.pageX,
         y: eEnd.pageY - eStart.pageY
+    } : eEnd.changedTouches ? {
+        // Chrome for Android
+        x: eEnd.changedTouches[0].pageX - eStart.changedTouches[0].pageX,
+        y: eEnd.changedTouches[0].pageY - eStart.changedTouches[0].pageY
+    } : {
+        x: 0,
+        y: 0
     };
 
     self.direction = {
